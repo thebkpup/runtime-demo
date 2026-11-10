@@ -1,5 +1,6 @@
 const http = require("node:http");
 function handler(req, res) {
+  if (req.url === "/") { res.writeHead(200, { "content-type": "text/html" }); res.end("<!doctype html><html><body><h1>runtime-demo</h1><a href='/orders'>orders</a> <a href='/health'>health</a></body></html>"); return; }
   if (req.url === "/health") { res.writeHead(200, { "content-type": "application/json" }); res.end(JSON.stringify({ ok: true })); return; }
   if (req.url === "/orders") { res.writeHead(200, { "content-type": "application/json" }); res.end(JSON.stringify({ orders: [] })); return; }
   res.writeHead(404, { "content-type": "text/plain" }); res.end("not found");
